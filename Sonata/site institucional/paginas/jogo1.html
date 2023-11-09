@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../site institucional/css/header.css">
+    <link rel="stylesheet" href="../../site institucional/css/jogo1.css">
+    <title>Sonata</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="./home.html"><img src="../../site institucional/imagens/SonataLogoSfundo.png" alt="logo sonata"></a>
+        </div>
+        <div class="itens-nav">
+           
+                <a href="../../site institucional/paginas/home.html">HOME</a>
+                <a href="#">SOBRE NÓS</a>
+                <a href="#">DEDICAÇÃO</a>
+                <a href="#">PAG</a>
+                      
+        </div>
+    </div>
+    <div class="piano">
+
+        <div class="controles">
+            <h2>Teclado do pai</h2>
+            <label class="checkbox_label">
+                <span style="margin-top: 3px;"> usar teclas</span>
+                <span class="switcher">
+                    <span class="switcher_botao"></span>
+                </span>
+                <input type="checkbox" class="checkbox_teclas" hidden>
+           </label>
+        </div>
+
+
+        
+        <div class="teclas_piano desabilitar_tecla">
+          <div class="key branca" data-note="1"><span>TAB</span></div>
+             <div class="key preta" data-note="2"><span>1</span></div>
+            <div class="key branca" data-note="3"><span>q</span></div>
+             <div class="key preta" data-note="4"><span>2</span></div>
+            <div class="key branca" data-note="5"><span>w</span></div>
+            <div class="key branca" data-note="6"><span>e</span></div>
+             <div class="key preta" data-note="7"><span>4</span></div>
+            <div class="key branca" data-note="8"><span>r</span></div>
+             <div class="key preta" data-note="9"><span>5</span></div>
+           <div class="key branca" data-note="10"><span>t</span></div>
+            <div class="key preta" data-note="11"><span>6</span></div>
+           <div class="key branca" data-note="12"><span>y</span></div>
+           <div class="key branca" data-note="13"><span>u</span></div>
+            <div class="key preta" data-note="14"><span>8</span></div>
+           <div class="key branca" data-note="15"><span>i</span></div>
+            <div class="key preta" data-note="16"><span>9</span></div>
+           <div class="key branca" data-note="17"><span>o</span></div>
+           <div class="key branca" data-note="18"><span>0</span></div>
+            <div class="key preta" data-note="19"><span>p</span></div>
+           <div class="key branca" data-note="20"><span>-</span></div>
+            <div class="key preta" data-note="21"><span>[</span></div>
+           <div class="key branca" data-note="22"><span>a</span></div>
+            <div class="key preta" data-note="23"><span>s</span></div>
+           <div class="key branca" data-note="24"><span>d</span></div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+<script>
+    const teclas = document.querySelectorAll('.key');
+
+    const checkbox = document.querySelector('.checkbox_teclas');
+    const switcher = document.querySelector('.switcher');
+    const todasTeclas = document.querySelector('.teclas_piano');
+
+    
+
+    const playNota = (note) => {
+        const audio = new Audio (`../../site institucional/notes/${note}.wav`);
+        audio.play();
+    }
+    
+    const click_mousedown = (tecla) => {
+        playNota(tecla.getAttribute('data-note'));
+
+        if(tecla.className.includes('preta')){
+            tecla.classList.add('preta_presionada');
+            return;
+        }
+
+        tecla.style.background = '#ddd';
+    }
+
+    const click_mouseup = (tecla) => {
+        if(tecla.className.includes('preta')){
+           tecla.classList.remove('preta_presionada');
+            return;
+        }
+        tecla.style.background = 'white';
+    }
+
+    teclas.forEach((tecla)=>{
+        tecla.addEventListener('mousedown',() => click_mousedown(tecla))
+
+        tecla.addEventListener('mouseup',() => click_mouseup(tecla))
+
+    });
+
+    checkbox.addEventListener('change', ({target})=>{
+        if(target.checked){
+            switcher.classList.add('switcher_ativo');
+            todasTeclas.classList.remove('desabilitar_tecla');
+            return;
+        }
+
+        switcher.classList.remove('switcher_ativo');
+        todasTeclas.classList.add('desabilitar_tecla');
+    });
+
+    const keydownTecla = {
+
+      "Tab" :  () => click_mousedown(teclas[0]),
+        "1" :  () => click_mousedown(teclas[1]),
+        "q" :  () => click_mousedown(teclas[2]),
+        "2" :  () => click_mousedown(teclas[3]),
+        "w" :  () => click_mousedown(teclas[4]),
+        "e" :  () => click_mousedown(teclas[5]),
+        "4" :  () => click_mousedown(teclas[6]),
+        "r" :  () => click_mousedown(teclas[7]),
+        "5" :  () => click_mousedown(teclas[8]),
+        "t" :  () => click_mousedown(teclas[9]),
+        "6" :  () => click_mousedown(teclas[10]),
+        "y" :  () => click_mousedown(teclas[11]),
+        "u" :  () => click_mousedown(teclas[12]),
+        "8" :  () => click_mousedown(teclas[13]),
+        "i" :  () => click_mousedown(teclas[14]),
+        "9" :  () => click_mousedown(teclas[15]),
+        "o" :  () => click_mousedown(teclas[16]),
+        "0" :  () => click_mousedown(teclas[17]),
+        "p" :  () => click_mousedown(teclas[18]),
+        "-" :  () => click_mousedown(teclas[19]),
+        "[" :  () => click_mousedown(teclas[20]),
+        "a" :  () => click_mousedown(teclas[21]),
+        "s" :  () => click_mousedown(teclas[23]),
+        "d" :  () => click_mousedown(teclas[23]),
+
+    }
+    
+    const keyupTecla = {
+
+"Tab" :  () => click_mouseup(teclas[0]),
+  "1" :  () => click_mouseup(teclas[1]),
+  "q" :  () => click_mouseup(teclas[2]),
+  "2" :  () => click_mouseup(teclas[3]),
+  "w" :  () => click_mouseup(teclas[4]),
+  "e" :  () => click_mouseup(teclas[5]),
+  "4" :  () => click_mouseup(teclas[6]),
+  "r" :  () => click_mouseup(teclas[7]),
+  "5" :  () => click_mouseup(teclas[8]),
+  "t" :  () => click_mouseup(teclas[9]),
+  "6" :  () => click_mouseup(teclas[10]),
+  "y" :  () => click_mouseup(teclas[11]),
+  "u" :  () => click_mouseup(teclas[12]),
+  "8" :  () => click_mouseup(teclas[13]),
+  "i" :  () => click_mouseup(teclas[14]),
+  "9" :  () => click_mouseup(teclas[15]),
+  "o" :  () => click_mouseup(teclas[16]),
+  "0" :  () => click_mouseup(teclas[17]),
+  "p" :  () => click_mouseup(teclas[18]),
+  "-" :  () => click_mouseup(teclas[19]),
+  "[" :  () => click_mouseup(teclas[20]),
+  "a" :  () => click_mouseup(teclas[21]),
+  "s" :  () => click_mouseup(teclas[23]),
+  "d" :  () => click_mouseup(teclas[23]),
+
+}
+    
+    document.addEventListener('keydown', ( event) => {
+        event.preventDefault();
+        keydownTecla[event.key]()
+    });
+
+    document.addEventListener('keyup', ( event) => {
+        keyupTecla[event.key]()
+    });
+
+
+
+
+</script>

@@ -1,0 +1,134 @@
+/* fonte */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.piano{
+    background-color: #020202;
+    width: 45vw;
+    height: 50vh;
+    /* margin: 150px 600px 0; */
+    margin: 100px auto ;
+    border-radius: 20px;
+    /* color: white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.controles{
+    color: rgba(255, 255, 255, 0.8);
+    padding: 26px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.controles h2{
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.switcher{
+    width: 50px;
+    height: 25px;
+    background-color: #555;
+    display: flex;
+    border-radius: 50px;
+    padding: 4px;
+}
+
+.switcher_botao{
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: #ddd;
+    border-radius: 25px;
+
+}
+
+.switcher_ativo{
+    background-color: #006eff;
+    justify-content: flex-end;
+}
+
+.checkbox_label{
+    display: flex;
+    gap: 15px;
+}
+
+.teclas_piano{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #181818;
+    border-radius: 5px;
+    padding: 20px 20px;
+    
+}
+
+.branca{
+    background-color: white;
+    flex-grow: 3;
+    border-radius: 5px;
+    border-bottom: 8px solid #ddd;
+    color: rgba(0, 0, 0, 0.3);
+    margin-left: -9px;
+    z-index: 1;
+    width: 15px;
+}
+
+.key span{
+    font-weight: 600;
+    position: absolute;
+    transition-duration: 300ms;
+}
+
+.key{
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 8px;
+    user-select: none;
+}
+
+.preta{
+    width: 24px;
+    background: linear-gradient(black, #333) ;
+    height: 17vh;
+    border-radius: 0 0 5px 5px;
+    border-bottom: 8px solid #222;
+    margin-left: -12px;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.teclas_piano .branca:nth-child(1){
+    margin-left: 1px;
+}
+
+.teclas_piano .branca:nth-child(5){
+    margin-right: 12px;
+}
+
+.teclas_piano .branca:nth-child(12){
+    margin-right: 12px;
+}
+
+.teclas_piano .branca:nth-child(17){
+    margin-right: 12px;
+}
+
+.preta_presionada{
+    background : linear-gradient(#222, black);
+    border-Bottom : 'none';
+    height : 16.5vh;
+}
+
+.desabilitar_tecla span{
+    opacity: 0;
+}
