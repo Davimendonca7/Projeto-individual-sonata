@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sonata | Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="icon" href="./assets/icon/favicon2.ico" />
+  <link rel="stylesheet" href="./css/sweetalert.css">
+  <link rel="stylesheet" href="./css/login.css" />
+  <link rel="stylesheet" href="./css/header.css">
+</head>
+
+<body>
+  <!--header inicio-->
+  <div class="header">
+    <div class="logo">
+        <a href="./home.html"><img src="./imagens/SonataLogoSfundo.png" alt="logo sonata"></a>
+    </div>
+    <div class="itens-nav">
+       
+            <a href="./index.html">HOME</a>
+            <a href="#">SOBRE NÓS</a>
+            <a href="#">DEDICAÇÃO</a>
+            <a href="../paginas/jogo1.html">PAG</a>
+                  
+    </div>
+</div>
+
+          <div class="main-login">
+       
+            <div class="form">
+                <div class="card_cadastro">
+                    <h1>CADASTRO</h1>
+                    <div class="texto1">
+                        <label for="usuario">Nome</label>
+                        <input type="text" id="nome_input" placeholder="Nome">
+                    </div>
+                    <div class="texto1">
+                        <label for="usuario">Email</label>
+                        <input type="text" id="email_input" placeholder="Email">
+                    </div>
+                    <div class="texto1">
+                        <label for="usuario">Senha</label>
+                        <input type="password" id="senha_input" placeholder="Senha">
+                    </div>
+                    <div class="texto1">
+                        <label for="usuario">Confirmar Senha</label>
+                        <input type="password" id="confirmacao_senha_input" placeholder="Senha">
+                    </div>
+                   
+                    <button class="btn_login" onclick="cadastrar()">CADASTRAR</button>
+                </div>
+            </div>
+            <div class="imagem_frase_cadastro">
+                       <div class="frase_login">Unidos pela música, juntos pelo som</div>
+                        <img src="./imagens/imagemCadastro.svg" class="imagem-cadastro" alt="pianista animação">
+                    </div>
+        </div>
+    
+        <div id="div_aguardar" class="loading-div">
+          <img src="./assets/circle-loading.gif" id="loading-gif" style="display: none;" />
+        </div>
+
+        <div id="div_erros_login"></div>
+        <div id="sweet_alert"></div>
+
+        <!-- sweet alert -->
+<script src="./js/sweetalert.js"></script>
+</body>
+
+</html>
+
+<script>
+  function cadastrar() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+   
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" 
+ 
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+       
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+          
+          Swal.fire({
+          title: "Good job!",
+          text: "You clicked the button!",
+          icon: "success"
+        });
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "./usuario/jogo1.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
