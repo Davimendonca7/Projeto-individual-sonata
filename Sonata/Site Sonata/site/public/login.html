@@ -9,11 +9,10 @@
     <title>Sonata | Login</title>
 
     <script src="./js/sessao.js"></script>
-
-    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="icon" href="./imagens/SonataLogoSfundol.jpg">
+    <link rel="stylesheet" href="./css/sweetalert.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/login.css">
-
 </head>
 
 <body>
@@ -22,13 +21,13 @@
 
     <div class="header">
         <div class="logo">
-            <a href="../../home.html"><img src="./imagens/SonataLogoSfundo.png" alt="logo sonata"></a>
+            <a href="./index.html"><img src="./imagens/SonataLogoSfundo.png" alt="logo sonata"></a>
         </div>
         <div class="itens-nav">
-                <a href="../../site institucional/paginas/home.html">HOME</a>
+                <a href="./index.html">HOME</a>
                 <a href="#">SOBRE NÓS</a>
                 <a href="#">DEDICAÇÃO</a>
-                <a href="#">pag</a>            
+                <!-- <a href="#">pag</a>    -->
         </div>
     </div>
     
@@ -38,15 +37,15 @@
    
     <div class="main-login">
         <div class="imagem_frase">
-           <div class="frase_login"><span style="font-size: 4vw; font-weight: 800;"> Sonata</span><br>Sintonia Perfeita em Cada Nota!</div>
+           <div class="frase_login"><br>Sintonia Perfeita em Cada Nota!</div>
             <img src="./imagens/saxofonista.svg" class="imagem-sax" alt="saxofonista animação">
         </div>
         <div class="form">
             <div class="card_login">
                 <h1>LOGIN</h1>
                 <div class="texto1">
-                    <label for="usuario">Usuario</label>
-                    <input type="text" id="email_input" placeholder="Usuario">
+                    <label for="usuario">Nome ou email</label>
+                    <input type="text" id="email_input" placeholder="Nome de usuario ou email">
                 </div>
                 <div class="texto1">
                     <label for="usuario">Senha</label>
@@ -59,14 +58,15 @@
 
     </div>
    
-    <div id="div_aguardar" class="loading-div">
-        <img src="./assets/circle-loading.gif" id="loading-gif" style="width:50px ;">
+    <div id="div_aguardar" class="loading-div" ">
+        <img src="./assets/circle-loading.gif" id="loading-gif" style="display: none;">
     </div>
 
     <div id="div_erros_login"></div>
 
   
-
+       <!-- sweet alert -->
+       <script src="./js/sweetalertCadastro.js"></script>
 </body>
 
 </html>
@@ -76,6 +76,8 @@
 
     function entrar() {
         aguardar();
+
+        
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -106,6 +108,26 @@
             console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+                });
+                Toast.fire({
+                    title: "Login feito com sucesso",
+                text: "Bem vindo!",
+                icon: "success",
+                color: "#F2CF63",
+                background: "#011126",
+                iconColor : "#F2CF63",
+                });
+
                 console.log(resposta);
 
                 resposta.json().then(json => {
@@ -117,8 +139,8 @@
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios);
 
                     setTimeout(function () {
-                        window.location = "./usuario/jogo1.html";
-                    }, 1000); // apenas para exibir o loading
+                        window.location = "./usuario/homeUser.html";
+                    }, 3000); // apenas para exibir o loading
 
                 });
 

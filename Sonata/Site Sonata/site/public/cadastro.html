@@ -9,28 +9,30 @@
   <title>Sonata | Cadastro</title>
 
   <script src="./js/sessao.js"></script>
-
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
+  <link rel="icon" href="./imagens/SonataLogoSfundol.jpg" />
   <link rel="stylesheet" href="./css/sweetalert.css">
   <link rel="stylesheet" href="./css/login.css" />
   <link rel="stylesheet" href="./css/header.css">
+
 </head>
 
 <body>
-  <!--header inicio-->
+      <!--header inicio-->
   <div class="header">
     <div class="logo">
-        <a href="./home.html"><img src="./imagens/SonataLogoSfundo.png" alt="logo sonata"></a>
+        <a href="./index.html"><img src="./imagens/SonataLogoSfundo.png" alt="logo sonata"></a>
     </div>
     <div class="itens-nav">
        
             <a href="./index.html">HOME</a>
             <a href="#">SOBRE NÓS</a>
             <a href="#">DEDICAÇÃO</a>
-            <a href="../paginas/jogo1.html">PAG</a>
+            <!-- <a href="#">PAG</a> -->
                   
     </div>
 </div>
+      <!-- header fim -->
+
 
           <div class="main-login">
        
@@ -58,7 +60,7 @@
                 </div>
             </div>
             <div class="imagem_frase_cadastro">
-                       <div class="frase_login">Unidos pela música, juntos pelo som</div>
+                       <div class="frase_login">Unidos pela música, juntos pelo som.</div>
                         <img src="./imagens/imagemCadastro.svg" class="imagem-cadastro" alt="pianista animação">
                     </div>
         </div>
@@ -68,10 +70,12 @@
         </div>
 
         <div id="div_erros_login"></div>
-        <div id="sweet_alert"></div>
+        <div id="mensagem_erro"></div>
+
+       
 
         <!-- sweet alert -->
-<script src="./js/sweetalert.js"></script>
+<script src="./js/sweetalertCadastro.js"></script>
 </body>
 
 </html>
@@ -79,6 +83,9 @@
 <script>
   function cadastrar() {
     aguardar();
+
+    
+
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -94,9 +101,10 @@
       confirmacaoSenhaVar == "" 
  
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      // cardErro.style.display = "block";
+      // mensagem_erro.innerHTML =
+      //   "(Mensagem de erro para todos os campos em branco)";
+      alert("campos em branco")
 
       finalizarAguardar();
       return false;
@@ -123,19 +131,29 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
-          
           Swal.fire({
-          title: "Good job!",
-          text: "You clicked the button!",
-          icon: "success"
-        });
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          title: "Cadastrado!",
+          text: "Você faz parte da Sonata agora",
+          icon: "success",
+          color: "#F2CF63",
+          background: "#011126",
+          iconColor : "#F2CF63",
+          confirmButtonColor : "#F2CF63",
+          confirmButtonTextColor : "#000b21"
+        }).then((result)=> {
+          if(result.isConfirmed){
+        setTimeout(() => {
+                    window.location = "./login.html";
+                  }, "1000");
+          }
+        })
+          
+         
 
-          setTimeout(() => {
-            window.location = "./usuario/jogo1.html";
-          }, "2000");
+          // mensagem_erro.innerHTML =
+          //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+         
 
           limparFormulario();
           finalizarAguardar();
