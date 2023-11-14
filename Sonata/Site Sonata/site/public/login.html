@@ -58,11 +58,10 @@
 
     </div>
    
-    <div id="div_aguardar" class="loading-div" ">
+    <!-- <div id="div_aguardar" class="loading-div" >
         <img src="./assets/circle-loading.gif" id="loading-gif" style="display: none;">
-    </div>
+    </div> -->
 
-    <div id="div_erros_login"></div>
 
   
        <!-- sweet alert -->
@@ -75,7 +74,7 @@
 
 
     function entrar() {
-        aguardar();
+        // aguardar();
 
         
 
@@ -83,9 +82,29 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+                });
+                Toast.fire({
+                    title: "Preencha os campos !",
+                text: "Todos os campos estão em branco.",
+                icon: "error",
+                color: "#F2CF63",
+                background: "#011126",
+                iconColor : "red",
+                });
+
+            
+           
+            // finalizarAguardar();
             return false;
         }
         else {
