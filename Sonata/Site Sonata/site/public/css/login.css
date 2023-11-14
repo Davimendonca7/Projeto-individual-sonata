@@ -181,7 +181,7 @@ body{
 }
 .card_cadastro{
     width: 60%;
-    height: 73vh;
+    height: 77vh;
     margin-top: 65px;
     display: flex;
     justify-content: center;
@@ -197,7 +197,7 @@ body{
     color: #F2CF63;
     font-weight: 800;
     margin: 0;
-    margin-bottom: 15px;
+    /* margin-bottom: px; */
 }
 
 
