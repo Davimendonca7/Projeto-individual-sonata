@@ -108,7 +108,8 @@
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            // setInterval(
+            //     'sumir mensagem', 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -155,7 +156,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios);
+                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios);
 
                     setTimeout(function () {
                         window.location = "./usuario/homeUser.html";
@@ -165,11 +166,32 @@
 
             } else {
 
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+                });
+                Toast.fire({
+                    title: "Falha ao realizar login!",
+                text: "Email ou senha inválidos.",
+                icon: "error",
+                color: "#F2CF63",
+                background: "#011126",
+                iconColor : "red",
+                });
+
+                console.log("enha ou user invalido")
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 
@@ -180,8 +202,8 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 </script>

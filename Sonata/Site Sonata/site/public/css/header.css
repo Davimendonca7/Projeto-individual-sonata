@@ -10,9 +10,14 @@ body{
 .header{
     color: white;
     display: flex;
-    width: 100vw;
+    width: 98vw;
     height: 14vh;
     justify-content: space-between;
+}
+
+.header_jogo1{
+    width: 100%;
+    background-color: #000b21;
 }
 
 .header img{
@@ -58,5 +63,20 @@ body{
     color: #F2CF63;
     /* box-shadow: 0px 0px 35px #F2CF63; */
     
+}
+
+ ul li a{
+    text-decoration: none;
+}
+
+.drop{
+    position: absolute;
+    display: none;
+}
+
+
+.drop a{
+    display: block;
+
 }
 

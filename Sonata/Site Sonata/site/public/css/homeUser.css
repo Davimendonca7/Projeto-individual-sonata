@@ -3,9 +3,9 @@
 
 }
 
-.primeira_parte{
+/* .primeira_parte{
 
-}
+} */
 
 .flex{
     display: flex;
@@ -30,20 +30,22 @@
     width: 40vw;
 }
 
-.imagem_topo{
+/* .imagem_topo{
     
-    /* justify-items: center; */
+   
     
-}
+} */
 
 main{
     background-color: #011126;
-    height: 86vh;
+    height: 200vh;
+    width: 100%;
 }
 
 
 
 /* segunda parte */
+
 .segunda{
     padding: 40px 4%;
 
@@ -75,11 +77,11 @@ main{
     gap: 90px;
 }
 
-.imagem_topo{
+/* .imagem_topo{
     
-    /* justify-items: center; */
+   
     
-}
+} */
 
 .parte2{
     /* padding: 40px; */
