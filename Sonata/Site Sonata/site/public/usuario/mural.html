@@ -2,84 +2,87 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../imagens/saxlogo.jpg" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonata | forum</title>
 
-    <title>Sonata | Forum </title>
-
+    <!-- <link rel="stylesheet" href="../cssWeb/style.css"> -->
+    <link rel="stylesheet" href="./../css/sweetalert.css">
+    <link rel="stylesheet" href="./../css/mural.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/forum.css">
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <!-- <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet"> -->
 </head>
 
 <body onload="validarSessao(), atualizarFeed()">
 
-    <div class="janela">
-
-
-        <!-- header -->
-        <div class="header header_jogo1">
-            <div class="logo">
-                <a href="../usuario/homeUser.html"><img src="../imagens/SonataLogoSfundo.png" alt="logo sonata"></a>
-            </div>
-            <div class="itens-nav">
-               
-                    <a href="../usuario/homeUser.html">HOME</a>
-                    <a href="#">MURAL</a>
-                    <a href="#">CONTA</a>
-                    <a href="#">SAIR</a>
-                          
-            </div>
+    <!-- header -->
+    <div class="header">
+        <div class="logo">
+            <a href="../usuario/homeUser.html"><img src="../imagens/SonataLogoSfundo.png" alt="" style="width:100px;"></a>
         </div>
+        <div class="itens-nav">
+                <a href="./homeUser.html">HOME</a>
+                <a href="./jogo1.html">JOGO</a>
+                <a href="#">ALÁLISES</a>
+                <a href="#">CONTA</a>            
+                <a href="#" onclick="limparSessao()">SAIR</a>
+            
+        </div>
+    </div>
+    <!-- fim header -->
 
-        <!-- fim header -->
+    
+
+            <span class="frase_sugestao">
+                <h1>Bem vindo ao mural <span id="b_usuario">usuário</span>, que tal deixar uma sugestão para nós.</h1>
+             </span>
+
+       
 
         <div class="dash-right">
 
-
-            <div class="avisos">
                 <div id="alerta">
                 </div>
-                <div class="container">
-                    <h1>Publicar um aviso</h1>
-                    <div class="div-form">
-                        <form id="form_postagem" method="post" onsubmit="return publicar()">
-                            <label>
-                                <h1>Título:</h1>
-                                <br>
-                                <input name="titulo" id="titulo" maxlength="100" type="text">
-                            </label>
-                            <br>
-                            <label>
-                               <h1> Descrição (máximo de 250 caracteres):</h1>
-                                <br>
-                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
-                            </label>
-                            <br>
-                            <button>Enviar</button>
-                        </form>
-                    </div>
-                    <h1>Mural de Avisos</h1>
+
+                    <!-- <h1>Publicar um aviso</h1> -->
+            <div class="div-form">
+                <div class="card_sugestao">
+                    <form id="form_postagem" method="post" onsubmit="return publicar()">                           
+                        <div class="div_sugestao">
+                            <label for="sugestao"> Título:</label>
+                            <input name="titulo" id="titulo" maxlength="100" type="text" placeholder="Dê um titúlo para sua sugestão ">                           
+                        </div>                            
+                        <div class="div_sugestao">
+                                <label for="sugestao">Descrição:</label>
+                                <textarea name="descricao" id="textarea_descricao" maxlength="150" rows="5" placeholder="Descreva sua sugestão (máximo de 150 caracteres)"></textarea>
+                        </div>
+
+                            <button class="btn_sugestao">Enviar sugestão</button>
+                    </form>
+                </div>
+            </div>
+                    <!-- <h1>Mural de Avisos</h1> -->
+                    <span class="frase_sugestao">
+                        <h1>Veja todas as sugestões</h1>
+                     </span>
                     <div class="div-results">
+                        
                         <div id="feed_container" class="feed-container">
                         </div>
                     </div>
-                </div>
-            </div>
+                
+            
         </div>
-    </div>
+  
 
 
 
-
+ <!-- sweet alert -->
+ <script src="../js/sweetalertCadastro.js"></script>
 </body>
 
 </html>
@@ -93,11 +96,40 @@
     }
 
     function publicar() {
+        var titulo_sugestao = titulo.value;
+        var sugestao = textarea_descricao.value;
+
         var idUsuario = sessionStorage.ID_USUARIO;
 
         var corpo = {
             titulo: form_postagem.titulo.value,
             descricao: form_postagem.descricao.value
+        }
+
+        if(titulo_sugestao == "" || sugestao ==""){
+            console.log('texto vazio')
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+                });
+                Toast.fire({
+                    title: "Preencha todos os campos !",
+                text: "Há campos em branco.",
+                icon: "error",
+                color: "#F2CF63",
+                background: "#011126",
+                iconColor : "red",
+                });
+
+            return false;
         }
 
         fetch(`/avisos/publicar/${idUsuario}`, {
@@ -111,10 +143,36 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-                window.location = "/dashboard/mural.html";
+
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+                });
+                Toast.fire({
+                    title: "Sugestão enviada !",
+                text: "Obrigado por contribuir.",
+                icon: "success",
+                color: "#F2CF63",
+                background: "#011126",
+                iconColor : "#F2CF63",
+                });
+
+                // window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                
+                setTimeout(function () {
+                        window.location = "./mural.html";
+                    }, 2000);
+                
+                    // window.location = "/dashboard/mural.html";
                 limparFormulario();
-                // finalizarAguardar();
+                
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -138,6 +196,9 @@
     }
 
     function deletar(idAviso) {
+
+        
+
         console.log("Criar função de apagar post escolhido - ID" + idAviso);
         fetch(`/avisos/deletar/${idAviso}`, {
             method: "DELETE",
@@ -147,8 +208,32 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
+
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+                });
+                Toast.fire({
+                    title: "Excluído!",
+                text: "Sua sugestão foi excluida.",
+                icon: "success",
+                color: "#F2CF63",
+                background: "#011126",
+                iconColor : "#F2CF63",
+                });
+
+                // window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                setTimeout(function () {
+                        window.location = "./mural.html";
+                    }, 2000);
+
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -165,7 +250,7 @@
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
                     var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    mensagem.innerHTML = "Ainda sem sugestões, seja o primeiro a enviar."
                     feed.appendChild(mensagem);
                     throw "Nenhum resultado encontrado!!";
                 }
@@ -222,7 +307,7 @@
                         feed.appendChild(divPublicacao);
                     }
 
-                    finalizarAguardar();
+                    // finalizarAguardar();
                 });
             } else {
                 throw ('Houve um erro na API!');

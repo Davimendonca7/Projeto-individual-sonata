@@ -66,14 +66,6 @@
                     </div>
         </div>
     
-        <!-- <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" style="display: none;" />
-        </div> -->
-
-        <!-- <div id="div_erros_login"></div>
-        <div id="mensagem_erro"></div> -->
-
-       
 
         <!-- sweet alert -->
 <script src="./js/sweetalertCadastro.js"></script>
@@ -83,12 +75,8 @@
 
 <script>
   function cadastrar() {
-    // aguardar();
 
-    
-
-
-    //Recupere o valor da nova input pelo nome do id
+       //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
@@ -110,7 +98,6 @@
           background: "#011126",
           iconColor : "red",
           confirmButtonColor : "#F2CF63",
-          // confirmButtonTextColor : "#000b21"
         })
 
       
@@ -157,14 +144,14 @@
           
     
           limparFormulario();
-          finalizarAguardar();
+         
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+       
       });
 
     return false;
