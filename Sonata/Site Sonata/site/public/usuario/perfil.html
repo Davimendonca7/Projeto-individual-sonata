@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title>Sonata | Página Inicial</title>
+    
+        <script src="../js/sessao.js"></script>
+        <link rel="icon" href="./assets/icon/favicon2.ico">
+        <link rel="stylesheet" href="../css/header.css">
+        <link rel="stylesheet" href="../css/perfil.css">
+        <!-- <link rel="stylesheet" href="../css/formulario.css"> -->
+    </head>
+<body>
+    <!-- header -->
+    <div class="header">
+        <div class="logo">
+            <a href="../usuario/homeUser.html"><img src="../imagens/SonataLogoSfundo.png" alt="" style="width:100px;"></a>
+        </div>
+        <div class="itens-nav">
+                <!-- <a href="#">HOME</a> -->
+                <a href="./homeUser.html">HOME</a>            
+                <a href="./jogo1.html">JOGO</a>
+                <a href="#">ANÁLISES</a>
+                <a href="./mural.html">MURAL</a>
+                <a href="#" onclick="limparSessao()">SAIR</a>
+            
+        </div>
+    </div>
+    <!-- fim header -->
+    <main>
+        <div class="container">
+            <div class="fotoPerfil">
+                <div class="foto">
+                    <img src="../imagens/semFotoUser.png" alt="" >
+                </div>
+                <button class="btn_perfil">editar perfil</button>
+            </div>
+            <div class="dadosPerfil">
+                <h1>SUAS INFORMAÇÕES</h1>
+                <div class="dados">
+                    <div class="dados2">
+                    Seu email <br>
+                    <span id="email">email</span>
+                    </div>
+                    <div class="dados2">
+                    Sua senha <br> 
+                    <span id="senha">senha</span>
+                    </div>
+                </div>
+                <div class="dados">
+                    <div class="dados2">
+                    instrumento favorito <br>
+                    <span id="instrumento">instrumento</span>
+                    </div>
+                    <div class="dados2">
+                        Música favorita <br> 
+                        <span id="musica">musica</span>
+                    </div>
+                </div>
+                <div class="dados">
+                    <div class="dados2">
+                    Gênero favorito <br> 
+                    <span id="genero">genero</span>
+                    </div>
+                    <div class="dados2">
+                    artista favorito <br>
+                     <span id="artista">artista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+        
+    
+</body>
+</html>

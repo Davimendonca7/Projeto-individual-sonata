@@ -1,0 +1,85 @@
+main{
+    background-color: #011126;
+    height: 86vh;
+    width: 100%;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.fotoPerfil{
+    display: flex;
+    /* background-color: red; */
+    color: #F2CF63;
+    width: 30vw;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.foto{
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.foto img{
+    position: absolute;
+    width: 100%;
+    
+}
+
+.btn_perfil{
+    width: 35%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #000b21;
+    background-color: #f2ce63dc;
+    cursor: pointer;
+   
+}
+
+.btn_perfil:hover{
+    filter: brightness( 120% );
+    box-shadow: 0px 10px 40px -12px #F2CF63;
+    background-color: #F2CF63;
+}
+
+.dadosPerfil{
+    color: #F2CF63;
+    /* background-color: blue; */
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dadosPerfil h1{
+    color: #F2CF63;
+    font-weight: 800;
+    margin: 60px;
+    /* margin-bottom: 60px; */
+}
+
+.dados{
+    height:100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 800;
+    font-size: large;
+}

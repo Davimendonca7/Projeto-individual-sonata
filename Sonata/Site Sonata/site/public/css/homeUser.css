@@ -88,3 +88,20 @@ main{
     
     background-color:blue;
 }
+
+.formulario{
+    width: 100vw;
+    height: 100vh;
+    /* background-color: rgba(0, 0, 0, 0.39); */
+    /* background-color: #f2ce636e; */
+    position: absolute;
+   
+    
+}
+
+.formulario .tela{
+    /* position: relative; */
+    /* position: relative; */
+    /* z-index: 10 ; */
+}
+

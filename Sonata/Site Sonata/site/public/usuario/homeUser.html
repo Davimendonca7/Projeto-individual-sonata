@@ -12,18 +12,22 @@
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/homeUser.css">
+    <link rel="stylesheet" href="../css/formulario.css">
 </head>
 <body>
-
+    <div class="formulario">
+       
+        <div class="tela">
   <div class="header">
     <div class="logo">
         <a href="../usuario/homeUser.html"><img src="../imagens/SonataLogoSfundo.png" alt="" style="width:100px;"></a>
     </div>
     <div class="itens-nav">
-            <a href="#">HOME</a>
+            <!-- <a href="#">HOME</a> -->
             <a href="./jogo1.html">JOGO</a>
+            <a href="./jogo1.html">ANÁLISES</a>
             <a href="./mural.html">MURAL</a>
-            <a href="#">CONTA</a>            
+            <a href="./perfil.html">PERFIL</a>            
             <a href="#" onclick="limparSessao()">SAIR</a>
         
     </div>
@@ -31,6 +35,7 @@
 
  <!-- Primeira parte -->
  <main>
+
     <section class="topo">
         <div class="primeira_parte">
             <div class="flex">
@@ -46,14 +51,135 @@
             </div>
         </div>
     </section>
-</main>
-
-
-
    
- 
-
+</main>
+</div>
+</div>
+ <div class="form" id="form">
+    <div class="card_form">
+        <h1>Descubra sua Sinfonia Pessoal em </h1>
+        <span style="margin-bottom:20px;"><h1>Sonata!</h1></span>
+        <p>Participe da esperiência musical personalizada no Sonata preenchendo nosso formulario. Com suas escolhas favoritas vamos criar uma trilha sonora única que ecoa sua vida</p>
+        <div class="texto1">
+            <div class="texto2">
+                <label for="usuario">Instrumento Favorito</label>
+                <input type="text" id="instrumento_input" >
+            </div>
+            <div class="texto2">
+                <label for="usuario">Música Favorita</label>
+                <input type="text" id="música_input">
+            </div>
+        </div>
+        <div class="texto1">
+            <div class="texto2">
+                <label for="usuario">Gênero Favorito</label>
+                <input type="text" id="genero_input" >
+            </div>
+            <div class="texto2">
+                <label for="usuario">Artista Favorito</label>
+                <input type="text" id="artista_input">
+            </div>
+        </div>
+       
+        <button class="btn_form" onclick="cadastrarFav()">ENVIAR</button>
+       <!-- <img src="" alt=""> -->
+        
+    </div>
+ </div>
 </html>
 <script>
+     
      b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+     
+     console.log( sessionStorage.logou)
+     
+     if( sessionStorage.logou == sessionStorage.ID_USUARIO ){
+         console.log("ja logou")
+         form.style.display = 'none';
+        }else{
+            alert("nao logou")
+        }
+        sessionStorage.logou = sessionStorage.ID_USUARIO;
+
+        function cadastrarFav(){
+
+          
+          var instrumentoVar = instrumento_input.value;
+            var musicaVar = música_input.value;
+            var generoVar = genero_input.value;
+            var artistaVar = artista_input.value;
+            var idUsuario = sessionStorage.ID_USUARIO;
+            
+            form.style.display = 'none';
+            if (
+                instrumentoVar == "" ||
+                musicaVar == "" ||
+                generoVar == "" ||
+                artistaVar == "" 
+                ){
+                Swal.fire({
+                    title: "Preencha os campos !",
+                    text: "Todos os campos estão em branco.",
+                    icon: "error",
+                    color: "#F2CF63",
+                    background: "#011126",
+                    iconColor : "red",
+                    confirmButtonColor : "#F2CF63",
+                    })
+
+                
+                return false;
+                }
+                    // Enviando o valor da nova input
+    fetch("/favorito/cadastrarFav", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        idUsuarioServer : idUsuario,
+        instrumentoServer: instrumentoVar,
+        musicaServer: musicaVar,
+        generoServer: generoVar,
+        artistaServer: artistaVar,
+       
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+         
+         
+          Swal.fire({
+          title: "resposta enviada!",
+          text: "obrigado por responder",
+          icon: "success",
+          color: "#F2CF63",
+          background: "#011126",
+          iconColor : "#F2CF63",
+          confirmButtonColor : "#F2CF63",
+         
+        }).then((result)=> {
+          if(result.isConfirmed){
+        setTimeout(() => {
+                    window.location = "./homeUser.html";
+                  }, "1000");
+          }
+        })
+          
+    
+        //   limparFormulario();
+         
+        } else {
+          throw "Houve um erro ao tentar realizar o formulario!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+       
+      });
+        }
 </script>

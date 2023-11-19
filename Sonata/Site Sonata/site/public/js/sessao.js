@@ -1,4 +1,7 @@
 // sessão
+ 
+
+
 function validarSessao() {
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
@@ -13,7 +16,10 @@ function validarSessao() {
 }
 
 function limparSessao() {
-    sessionStorage.clear();
+    sessionStorage.removeItem(sessionStorage.EMAIL_USUARIO);
+    sessionStorage.removeItem(sessionStorage.NOME_USUARIO);
+    sessionStorage.removeItem(sessionStorage.ID_USUARIO);
+    // sessionStorage.clear();
     window.location = "../login.html";
 }
 

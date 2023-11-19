@@ -2,7 +2,7 @@
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
 
-CREATE DATABASE sonata;
+-- CREATE DATABASE sonata;
 
 USE sonata;
 
@@ -21,29 +21,30 @@ CREATE TABLE aviso (
 	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 
+CREATE TABLE detalhesUser(
+fkUsuario int primary key,
+instrumentoFav varchar(50),
+musicaFav varchar (50),
+generoFav varchar (50),
+artistaFav varchar (50),
+foreign key (fkUsuario) references usuario(id));
+
 
 -- SELECT id, nome, email FROM usuario WHERE email = 'davi.com' or nome = 'davi' AND senha = '222';
 
--- select * from usuario;
+select * from usuario;
+
+select * from aviso;
+
  -- delete from usuario where id = 2;
+ 
+-- truncate table aviso;
+
+-- truncate table usuario;
 
  -- drop database sonata;
 
 
 
--- create table medida (
--- 	id INT PRIMARY KEY AUTO_INCREMENT,
--- 	dht11_umidade DECIMAL,
--- 	dht11_temperatura DECIMAL,
--- 	luminosidade DECIMAL,
--- 	lm35_temperatura DECIMAL,
--- 	chave TINYINT,
--- 	momento DATETIME,
--- 	fk_aquario INT,
--- 	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
--- );
-
--- insert into empresa (razao_social, cnpj) values ('Empresa 1', '00000000000000');
--- insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
 
 
