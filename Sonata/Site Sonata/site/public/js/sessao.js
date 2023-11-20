@@ -1,5 +1,7 @@
 // sessão
- 
+ function logar(){
+    var id = sessionStorage.ID_USUARIO;
+ }
 
 
 function validarSessao() {

@@ -9,23 +9,24 @@
     <title>Sonata | Página Inicial</title>
 
     <script src="../js/sessao.js"></script>
+    <link rel="stylesheet" href="../css/sweetalert.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/homeUser.css">
     <link rel="stylesheet" href="../css/formulario.css">
 </head>
 <body>
-    <div class="formulario">
+    <!-- <div class="formulario"> -->
        
         <div class="tela">
-  <div class="header">
+  <div class="header headerUser">
     <div class="logo">
         <a href="../usuario/homeUser.html"><img src="../imagens/SonataLogoSfundo.png" alt="" style="width:100px;"></a>
     </div>
     <div class="itens-nav">
             <!-- <a href="#">HOME</a> -->
             <a href="./jogo1.html">JOGO</a>
-            <a href="./jogo1.html">ANÁLISES</a>
+            <a href="#">ANÁLISES</a>
             <a href="./mural.html">MURAL</a>
             <a href="./perfil.html">PERFIL</a>            
             <a href="#" onclick="limparSessao()">SAIR</a>
@@ -52,18 +53,18 @@
         </div>
     </section>
    
-</main>
-</div>
-</div>
- <div class="form" id="form">
+
+
+<!-- </div> -->
+ <div class="form" id="form" style="display:none;">
     <div class="card_form">
         <h1>Descubra sua Sinfonia Pessoal em </h1>
         <span style="margin-bottom:20px;"><h1>Sonata!</h1></span>
-        <p>Participe da esperiência musical personalizada no Sonata preenchendo nosso formulario. Com suas escolhas favoritas vamos criar uma trilha sonora única que ecoa sua vida</p>
+        <p>Participe da experiência musical personalizada no Sonata preenchendo nosso formulario. Com suas escolhas favoritas vamos criar uma trilha sonora única que ecoa sua vida</p>
         <div class="texto1">
             <div class="texto2">
                 <label for="usuario">Instrumento Favorito</label>
-                <input type="text" id="instrumento_input" >
+                <input type="text" id="instrumento_input">
             </div>
             <div class="texto2">
                 <label for="usuario">Música Favorita</label>
@@ -82,10 +83,14 @@
         </div>
        
         <button class="btn_form" onclick="cadastrarFav()">ENVIAR</button>
-       <!-- <img src="" alt=""> -->
+      
         
     </div>
  </div>
+</main>
+</div>
+              <!-- sweet alert -->
+  <script src="./js/sweetalertCadastro.js"></script>
 </html>
 <script>
      
@@ -95,9 +100,9 @@
      
      if( sessionStorage.logou == sessionStorage.ID_USUARIO ){
          console.log("ja logou")
-         form.style.display = 'none';
         }else{
-            alert("nao logou")
+          alert("nao logou")
+          form.style.display = 'flex';
         }
         sessionStorage.logou = sessionStorage.ID_USUARIO;
 
@@ -117,7 +122,8 @@
                 generoVar == "" ||
                 artistaVar == "" 
                 ){
-                Swal.fire({
+               
+                  Swal.fire({
                     title: "Preencha os campos !",
                     text: "Todos os campos estão em branco.",
                     icon: "error",
@@ -171,7 +177,7 @@
         })
           
     
-        //   limparFormulario();
+       
          
         } else {
           throw "Houve um erro ao tentar realizar o formulario!";

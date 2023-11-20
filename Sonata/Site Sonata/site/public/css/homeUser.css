@@ -1,3 +1,7 @@
+.tela{
+    width:100%;
+}
+
 .topo{
     padding: 40px 4%;
 
@@ -53,7 +57,7 @@ main{
 
 .segunda_parte{
     display: flex;
-    height: 86vh;
+    /* height: 86vh; */
 }
 
 .flex{
@@ -71,20 +75,14 @@ main{
 }
 
 .texto_segunda{
-    /* width: 50vw; */
+   
     align-items: center;
     justify-content: center;
     gap: 90px;
 }
 
-/* .imagem_topo{
-    
-   
-    
-} */
-
 .parte2{
-    /* padding: 40px; */
+   
     
     background-color:blue;
 }
@@ -92,16 +90,10 @@ main{
 .formulario{
     width: 100vw;
     height: 100vh;
-    /* background-color: rgba(0, 0, 0, 0.39); */
-    /* background-color: #f2ce636e; */
     position: absolute;
    
     
 }
 
-.formulario .tela{
-    /* position: relative; */
-    /* position: relative; */
-    /* z-index: 10 ; */
-}
+
 

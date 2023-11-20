@@ -8,13 +8,15 @@
         <title>Sonata | Página Inicial</title>
     
         <script src="../js/sessao.js"></script>
+        <link rel="stylesheet" href="../css/sweetalert.css">
         <link rel="icon" href="./assets/icon/favicon2.ico">
         <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/perfil.css">
-        <!-- <link rel="stylesheet" href="../css/formulario.css"> -->
+       
     </head>
-<body>
+<body onload="Dadosperfil(), logar()">
     <!-- header -->
+    <div class="tela">
     <div class="header">
         <div class="logo">
             <a href="../usuario/homeUser.html"><img src="../imagens/SonataLogoSfundo.png" alt="" style="width:100px;"></a>
@@ -36,45 +38,208 @@
                 <div class="foto">
                     <img src="../imagens/semFotoUser.png" alt="" >
                 </div>
-                <button class="btn_perfil">editar perfil</button>
+                <button class="btn_perfil" onclick="editar()">editar perfil</button>
             </div>
             <div class="dadosPerfil">
                 <h1>SUAS INFORMAÇÕES</h1>
                 <div class="dados">
                     <div class="dados2">
                     Seu email <br>
-                    <span id="email">email</span>
+                    <span id="emailFav">email</span>
                     </div>
                     <div class="dados2">
                     Sua senha <br> 
-                    <span id="senha">senha</span>
+                    <span id="senhaFav">senha</span>
                     </div>
                 </div>
                 <div class="dados">
                     <div class="dados2">
-                    instrumento favorito <br>
-                    <span id="instrumento">instrumento</span>
+                    Instrumento favorito <br>
+                    <span id="instrumentoFav">instrumento</span>
                     </div>
                     <div class="dados2">
-                        Música favorita <br> 
-                        <span id="musica">musica</span>
+                    Música favorita <br> 
+                    <span id="musicaFav">musica</span>
                     </div>
                 </div>
                 <div class="dados">
                     <div class="dados2">
-                    Gênero favorito <br> 
-                    <span id="genero">genero</span>
+                    Gênero musical favorito <br> 
+                    <span id="generoFav">genero</span>
                     </div>
                     <div class="dados2">
-                    artista favorito <br>
-                     <span id="artista">artista</span>
+                    Artista favorito <br>
+                     <span id="artistaFav">artista</span>
                     </div>
                 </div>
             </div>
         </div>
         
     </main>
+</div>
+
+    <div class="form" id="form" style="display:none;">
+        <div class="card_form">
+            <h1>EDITAR PERFIL</h1>
+           
+            <!-- <p>edite seu perfil</p> -->
+            <div class="texto1">
+                <div class="texto2">
+                    <label for="usuario">Mudar Email</label>
+                    <input type="text" id="email_input" >
+                </div>
+                <div class="texto2">
+                    <label for="usuario">Mudar Senha</label>
+                    <input type="text" id="senha_input">
+                </div>
+            </div>
+            <div class="texto1">
+                <div class="texto2">
+                    <label for="usuario">Instrumento Favorito</label>
+                    <input type="text" id="instrumento_input">
+                </div>
+                <div class="texto2">
+                    <label for="usuario">Música Favorita</label>
+                    <input type="text" id="musica_input">
+                </div>
+            </div>
+            <div class="texto1">
+                <div class="texto2">
+                    <label for="usuario">Gênero musical Favorito</label>
+                    <input type="text" id="genero_input" >
+                </div>
+                <div class="texto2">
+                    <label for="usuario">Artista Favorito</label>
+                    <input type="text" id="artista_input">
+                </div>
+            </div>
+           
+            <button class="btn_form" onclick="atualizar()">ENVIAR</button>
+          
+            
+        </div>
+     </div>
         
     
 </body>
 </html>
+
+<script>
+    
+    var idUsuario = sessionStorage.ID_USUARIO;
+    
+    function Dadosperfil(){
+        
+        console.log(idUsuario)
+
+        fetch("/favorito/Dadosperfil", {
+         method: "POST",
+         headers: {
+         "Content-Type": "application/json",
+         },
+        body: JSON.stringify({
+        idUsuarioServer : idUsuario,
+       
+        }),
+
+        }).then(function (resposta) {
+            if(resposta.ok){
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    var email = resposta.email;
+                    var senha = resposta.senha;
+                    var instrumento = resposta.instrumento;
+                    var musica = resposta.musica;
+                    var genero = resposta.genero;
+                    var artista = resposta.artista;
+                    
+                    console.log(email);
+                    console.log(senha);
+                    console.log(instrumento);
+                    console.log(musica);
+                    console.log(genero);
+                    console.log(artista);
+                    
+                    emailFav.innerHTML = email;
+                    senhaFav.innerHTML = senha;
+                    instrumentoFav.innerHTML = instrumento;
+                    musicaFav.innerHTML = musica;
+                    generoFav.innerHTML = genero;
+                    artistaFav.innerHTML = artista;
+
+                    email_input.value = email;
+                    senha_input.value = senha;
+                    instrumento_input.value = instrumento;
+                    musica_input.value = musica;
+                    genero_input.value = genero;
+                    artista_input.value = artista;
+
+                    
+                })
+
+            }
+           
+
+
+    });
+    }
+
+    function editar(){
+        form.style.display = "flex"
+    }
+
+    function atualizar(){
+        var id = idUsuario
+        var email = email_input.value; 
+        var senha = senha_input.value; 
+        var instrumento = instrumento_input.value; 
+        var musica = musica_input.value; 
+        var genero = genero_input.value; 
+        var artista = artista_input.value; 
+
+        fetch("/favorito/atualizar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        idServer : id,
+        emailServer : email,
+        senhaServer : senha,
+        instrumentoServer: instrumento,
+        musicaServer: musica,
+        generoServer: genero,
+        artistaServer: artista,
+       
+      }),
+    }) .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+         
+         console.log(resposta)
+         
+          
+        setTimeout(() => {
+                    window.location = "./perfil.html";
+                  }, "1000");
+          
+        }
+          
+    
+       
+         
+         else {
+          throw "Houve um erro ao tentar realizar o formulario!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+       
+      });
+
+       
+    }
+</script>
