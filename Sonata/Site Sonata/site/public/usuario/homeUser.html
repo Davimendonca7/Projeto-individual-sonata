@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../css/formulario.css">
 </head>
 <body>
-    <!-- <div class="formulario"> -->
+  
        
         <div class="tela">
   <div class="header headerUser">
@@ -24,9 +24,8 @@
         <a href="../usuario/homeUser.html"><img src="../imagens/SonataLogoSfundo.png" alt="" style="width:100px;"></a>
     </div>
     <div class="itens-nav">
-            <!-- <a href="#">HOME</a> -->
             <a href="./jogo1.html">JOGO</a>
-            <a href="#">ANÁLISES</a>
+            <a href="./analises.html">ANÁLISES</a>
             <a href="./mural.html">MURAL</a>
             <a href="./perfil.html">PERFIL</a>            
             <a href="#" onclick="limparSessao()">SAIR</a>
@@ -55,7 +54,8 @@
    
 
 
-<!-- </div> -->
+  </main>
+</div>
  <div class="form" id="form" style="display:none;">
     <div class="card_form">
         <h1>Descubra sua Sinfonia Pessoal em </h1>
@@ -73,7 +73,7 @@
         </div>
         <div class="texto1">
             <div class="texto2">
-                <label for="usuario">Gênero Favorito</label>
+                <label for="usuario">Gênero musical Favorito</label>
                 <input type="text" id="genero_input" >
             </div>
             <div class="texto2">
@@ -87,10 +87,10 @@
         
     </div>
  </div>
-</main>
-</div>
+
+
               <!-- sweet alert -->
-  <script src="./js/sweetalertCadastro.js"></script>
+  <script src="../js/sweetalertCadastro.js"></script>
 </html>
 <script>
      
@@ -101,7 +101,7 @@
      if( sessionStorage.logou == sessionStorage.ID_USUARIO ){
          console.log("ja logou")
         }else{
-          alert("nao logou")
+          console.log("nao logou")
           form.style.display = 'flex';
         }
         sessionStorage.logou = sessionStorage.ID_USUARIO;
@@ -157,28 +157,25 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-         
-         
+                  
           Swal.fire({
-          title: "resposta enviada!",
-          text: "obrigado por responder",
+          title: "Resposta enviada!",
+          text: "Obrigado(a) por colaborar.",
           icon: "success",
           color: "#F2CF63",
           background: "#011126",
           iconColor : "#F2CF63",
           confirmButtonColor : "#F2CF63",
          
-        }).then((result)=> {
-          if(result.isConfirmed){
-        setTimeout(() => {
-                    window.location = "./homeUser.html";
-                  }, "1000");
-          }
         })
-          
-    
+        // .then((result)=> {
+        //   if(result.isConfirmed){
+        // setTimeout(() => {
+        //             window.location = "./homeUser.html";
+        //           }, "1000");
+        //   }
+        // })
        
-         
         } else {
           throw "Houve um erro ao tentar realizar o formulario!";
         }

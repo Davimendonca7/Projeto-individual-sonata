@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sonata | Análises</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/analise.css" />
+    <script src="../js/sessao.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <a href="../usuario/homeUser.html"
+          ><img
+            src="../imagens/SonataLogoSfundo.png"
+            alt=""
+            style="width: 100px"
+        /></a>
+      </div>
+      <div class="itens-nav">
+        <a href="./homeUser.html">HOME</a>
+        <a href="./jogo1.html">JOGO</a>
+        <a href="./mural.html">MURAL</a>
+        <a href="./perfil.html">PERFIL</a>
+        <a href="#" onclick="limparSessao()">SAIR</a>
+      </div>
+    </div>
+    <main>
+      <div class="boxTitulo">
+        <h1>Sonata Analytics</h1>
+      </div>
+      <div class="container">
+        <div class="grafico">
+          <div class="grafico1">
+            <h1>Harmonia Instrumental</h1>
+            <p>
+              O gráfico 'Harmonia Instrumental', ao lado, destaca as escolhas mais populares de
+              instumentos musicais entre os úsuarios do nosso site, refletindo
+              as tendências e interesses da nossa comunidade musical
+              diversificada.
+            </p>
+          </div>
+          <div class="grafico1">
+            <canvas id="myChart1"></canvas>
+          </div>
+        </div>
+        <div class="grafico">
+          <div class="grafico1">
+            <canvas id="myChart2"></canvas>
+          </div>
+          <div class="grafico1">
+            <h1>Batidas em Alta</h1>
+            <p>
+              Explore as tendências sonoras do momento com o gráfico 'Batidas em Alta', ao lado, das
+              músicas mais ouvidas entre os usuarios, diretamente ao lado , e
+              sintonize-se com os hits favoritos de nossa vibrante comunidade
+              musical.
+            </p>
+          </div>
+        </div>
+        <div class="grafico">
+          <div class="grafico1">
+            <h1>Ecos Musicais</h1>
+            <p>
+             Descubra a diversidade musical de nossa comunidade com o gráfico 'Ecos Musicais', ao lado, destacando os estilos que ecoam entre nossos úsuarios, proporcionando uma viagem única pelos variados universos sonoros.
+            </p>
+          </div>
+          <div class="grafico1">
+            <canvas id="myChart3"></canvas>
+          </div>
+        </div>
+        <div class="grafico">
+          <div class="grafico1">
+            <canvas id="myChart4"></canvas>
+          </div>
+          <div class="grafico1">
+            <h1>Estrelas Musicais</h1>
+            <p>
+             Embarque em uma jornada musical personalizada com o gráfico 'Estrelas Musicais', ao lado, revelando os artistas mais amados por nossa comunidade e criando uma trilha sonora única sua experiencia no site.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<script>
+
+  window.onload = dadosGraficos();
+  window.onload = dadosGraficos2();
+  window.onload = dadosGraficos3();
+  window.onload = dadosGraficos4();
+
+  window.onload = plotarGrafico();
+  window.onload = plotarGrafico2();
+  window.onload = plotarGrafico3();
+  window.onload = plotarGrafico4();
+
+  function dadosGraficos() {
+    fetch("/dash/dadosGraficos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // idUsuarioServer : idUsuario,
+      }),
+    }).then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          console.log("Dados recebidos: ", JSON.stringify(resposta));
+          console.log(resposta[0].instrumentoFav);
+          console.log(resposta[0].totalInstrumento);
+
+          plotarGrafico(resposta);
+        });
+      }
+    });
+  }
+
+  var idUsuario = sessionStorage.ID_USUARIO;
+
+  console.log(idUsuario);
+
+  function plotarGrafico(resposta) {
+    // GRAFICO INSTRUMENTOS POPULARES
+    var instrumento1 = resposta[0].instrumentoFav;
+    var totalInstrumento1 = resposta[0].totalInstrumento;
+    var instrumento2 = resposta[1].instrumentoFav;
+    var totalInstrumento2 = resposta[1].totalInstrumento;
+    var instrumento3 = resposta[2].instrumentoFav;
+    var totalInstrumento3 = resposta[2].totalInstrumento;
+    var instrumento4 = resposta[3].instrumentoFav;
+    var totalInstrumento4 = resposta[3].totalInstrumento;
+
+    console.log("iniciando plotagem do gráfico...");
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
+          label: "instrumento",
+          data: [],
+          fill: false,
+          tension: 0.1,
+          borderWidth: 5,
+          borderColor: "#F2CF63",
+          backgroundColor: "#f2ce63dc",
+          // legend : position : 'bottom'
+        },
+      ],
+    };
+
+    labels.push(instrumento1, instrumento2, instrumento3, instrumento4);
+
+    dados.datasets[0].data.push(
+      totalInstrumento1,
+      totalInstrumento2,
+      totalInstrumento3,
+      totalInstrumento4
+    );
+
+    const config = {
+      type: "bar",
+      data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(document.getElementById("myChart1"), config);
+  }
+
+  // GRAFICO DOIS
+  function dadosGraficos2() {
+    fetch("/dash/dadosGraficos2", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // idUsuarioServer : idUsuario,
+      }),
+    }).then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          console.log("Dados recebidos musica: ", JSON.stringify(resposta));
+          // console.log(resposta[0].instrumentoFav)
+          // console.log(resposta[0].totalInstrumento)
+
+          plotarGrafico2(resposta);
+        });
+      }
+    });
+  }
+
+  function plotarGrafico2(resposta) {
+    // GRAFICO MUSICA POPULARES
+    var musica1 = resposta[0].musicaFav;
+    var totalmusica1 = resposta[0].totalmusica;
+    var musica2 = resposta[1].musicaFav;
+    var totalmusica2 = resposta[1].totalmusica;
+    var musica3 = resposta[2].musicaFav;
+    var totalmusica3 = resposta[2].totalmusica;
+    var musica4 = resposta[3].musicaFav;
+    var totalmusica4 = resposta[3].totalmusica;
+
+    console.log("iniciando plotagem do gráfico...");
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Músicas",
+          data: [],
+          fill: false,
+          tension: 0.1,
+          borderWidth: 5,
+          borderColor: "#F2CF63",
+          backgroundColor: "#f2ce63dc",
+        },
+      ],
+    };
+
+    labels.push(musica1, musica2, musica3, musica4);
+
+    dados.datasets[0].data.push(
+      totalmusica1,
+      totalmusica2,
+      totalmusica3,
+      totalmusica4
+    );
+
+    const config = {
+      type: "bar",
+      data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(document.getElementById("myChart2"), config);
+  }
+
+  function dadosGraficos3() {
+    fetch("/dash/dadosGraficos3", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // idUsuarioServer : idUsuario,
+      }),
+    }).then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          console.log("Dados recebidos musica: ", JSON.stringify(resposta));
+         
+
+          plotarGrafico3(resposta);
+        });
+      }
+    });
+  }
+
+  function plotarGrafico3(resposta) {
+    
+    // GRAFICO MUSICA POPULARES
+    var genero1 = resposta[0].generoFav;
+    var totalgenero1 = resposta[0].totalgenero;
+    var genero2 = resposta[1].generoFav;
+    var totalgenero2 = resposta[1].totalgenero;
+    var genero3 = resposta[2].generoFav;
+    var totalgenero3 = resposta[2].totalgenero;
+    var genero4 = resposta[3].generoFav;
+    var totalgenero4 = resposta[3].totalgenero;
+
+    console.log("iniciando plotagem do gráfico...");
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Generos musicais mais ouvidos",
+          data: [],
+          fill: false,
+          tension: 0.1,
+          borderWidth: 5,
+          borderColor: "#F2CF63",
+          backgroundColor: "#f2ce63dc",
+        },
+      ],
+    };
+
+    labels.push(genero1, genero2, genero3, genero4);
+
+    dados.datasets[0].data.push(
+      totalgenero1,
+      totalgenero2,
+      totalgenero3,
+      totalgenero4
+    );
+
+    const config = {
+      type: "bar",
+      data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(document.getElementById("myChart3"), config);
+  }
+
+
+  function dadosGraficos4() {
+    fetch("/dash/dadosGraficos4", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // idUsuarioServer : idUsuario,
+      }),
+    }).then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          console.log("Dados recebidos musica: ", JSON.stringify(resposta));
+         
+
+          plotarGrafico4(resposta);
+        });
+      }
+    });
+  }
+
+  function plotarGrafico4(resposta) {
+    
+    // GRAFICO MUSICA POPULARES
+    var artista1 = resposta[0].artistaFav;
+    var totalartista1 = resposta[0].totalartista;
+    var artista2 = resposta[1].artistaFav;
+    var totalartista2 = resposta[1].totalartista;
+    var artista3 = resposta[2].artistaFav;
+    var totalartista3 = resposta[2].totalartista;
+    var artista4 = resposta[3].artistaFav;
+    var totalartista4 = resposta[3].totalartista;
+
+    console.log("iniciando plotagem do gráfico...");
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Artistas mais ouvidos",
+          data: [],
+          fill: false,
+          tension: 0.1,
+          borderWidth: 5,
+          borderColor: "#F2CF63",
+          backgroundColor: "#f2ce63dc",
+        },
+      ],
+    };
+
+    labels.push(artista1, artista2, artista3, artista4);
+
+    dados.datasets[0].data.push(
+      totalartista1,
+      totalartista2,
+      totalartista3,
+      totalartista4
+    );
+
+    const config = {
+      type: "bar",
+      data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(document.getElementById("myChart4"), config);
+  }
+
+
+  // const ctx4 = document.getElementById("myChart4");
+
+  new Chart(ctx4, {
+    type: "bar",
+    data: {
+      labels: ["Red", "Blue", "Yellow", "Green"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [12, 19, 3, 5],
+          borderWidth: 1,
+          backgroundColor: "#F2CF63",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+</script>

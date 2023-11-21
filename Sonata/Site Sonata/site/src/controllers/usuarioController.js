@@ -20,11 +20,6 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar.length + ' autenticar');
 
-                        // aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                        //     .then((resultadoAquarios) => {
-
-                                // console.log(resultadoAquarios + ' aquarios' );
-
                                 if (resultadoAutenticar.length == 1) {
                                     res.json({
                                         id: resultadoAutenticar[0].id,
@@ -33,13 +28,8 @@ function autenticar(req, res) {
                                         senha: resultadoAutenticar[0].senha,
                                         
                                     });
-                                    // console.log(resultadoAquarios.length + ' aquarios length')
                                 } 
-                                // else {
-                                //     res.status(204).json({ aquarios: [] });
-                                // }
-                            // }
-                            // )
+                    
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {

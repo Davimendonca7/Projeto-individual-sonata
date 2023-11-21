@@ -1,15 +1,11 @@
 .tela{
     width:100%;
+    position: absolute;
 }
 
 .topo{
     padding: 40px 4%;
-
 }
-
-/* .primeira_parte{
-
-} */
 
 .flex{
     display: flex;
@@ -34,18 +30,11 @@
     width: 40vw;
 }
 
-/* .imagem_topo{
-    
-   
-    
-} */
-
 main{
     background-color: #011126;
     height: 200vh;
     width: 100%;
 }
-
 
 
 /* segunda parte */
@@ -57,7 +46,6 @@ main{
 
 .segunda_parte{
     display: flex;
-    /* height: 86vh; */
 }
 
 .flex{
@@ -81,19 +69,12 @@ main{
     gap: 90px;
 }
 
-.parte2{
+/* .parte2{
    
     
     background-color:blue;
-}
+} */
 
-.formulario{
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-   
-    
-}
 
 
 

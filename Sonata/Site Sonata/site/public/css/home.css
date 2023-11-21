@@ -1,13 +1,17 @@
 /* topo do site */
 
+main{
+
+    
+    background-color: #011126;
+}
+
 .topo{
     padding: 40px 4%;
 
 }
 
-.primeira_parte{
 
-}
 
 .flex{
     display: flex;
@@ -33,51 +37,4 @@
     
 }
 
-main{
-    background-color: #011126;
-}
 
-
-
-/* segunda parte */
-.segunda{
-    padding: 40px 4%;
-
-}
-
-.segunda_parte{
-    display: flex;
-}
-
-.flex{
-    display: flex;
-}
-
- .flex{
-    align-items: center;
-    justify-content: center;
-    gap: 90px;
-}
-
-.segunda h1, p{
-    color: #f2cf63;
-}
-
-.texto_segunda{
-    /* width: 50vw; */
-    align-items: center;
-    justify-content: center;
-    gap: 90px;
-}
-
-.imagem_topo{
-    
-    /* justify-items: center; */
-    
-}
-
-.parte2{
-    /* padding: 40px; */
-    height: 86vh;
-    /* background-color:blue; */
-}

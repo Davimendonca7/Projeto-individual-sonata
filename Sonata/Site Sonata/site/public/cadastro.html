@@ -27,7 +27,6 @@
             <a href="./index.html">HOME</a>
             <a href="#">SOBRE NÓS</a>
             <a href="#">DEDICAÇÃO</a>
-            <!-- <a href="#">PAG</a> -->
                   
     </div>
 </div>
@@ -102,19 +101,29 @@
 
       
       return false;
-    } else {
+    } else if(senhaVar != confirmacaoSenhaVar){
+      Swal.fire({
+          title: "Preencha os campos corretamente !",
+          text: "A confirmação da senha deve ser igual a senha, não se esqueça.",
+          icon: "error",
+          color: "#F2CF63",
+          background: "#011126",
+          iconColor : "red",
+          confirmButtonColor : "#F2CF63",
+        })
+
+        return false;
+    }else {
       setInterval(sumirMensagem, 5000);
     }
 
-    // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
+       
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
@@ -133,7 +142,7 @@
           background: "#011126",
           iconColor : "#F2CF63",
           confirmButtonColor : "#F2CF63",
-          // confirmButtonTextColor : "#000b21"
+         
         }).then((result)=> {
           if(result.isConfirmed){
         setTimeout(() => {

@@ -1,14 +1,14 @@
 var favoritoModel = require("../models/favoritoModel");
 
 function cadastrarFav(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    
     var id = req.body.idUsuarioServer;
     var instrumento = req.body.instrumentoServer;
     var musica = req.body.musicaServer;
     var genero = req.body.generoServer;
     var artista = req.body.artistaServer;
 
-    // Faça as validações dos valores
+    
     if (instrumento == undefined) {
         res.status(400).send("Seu instrumento está undefined!");
     } else if (musica == undefined) {
@@ -19,7 +19,7 @@ function cadastrarFav(req, res) {
         res.status(400).send("Seu artista está undefined!");
     }  else {
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+       
         favoritoModel.cadastrarFav(id, instrumento, musica, genero, artista)
             .then(
                 function (resultado) {
@@ -86,7 +86,7 @@ function Dadosperfil(req, res) {
         var artista = req.body.artistaServer;
         var id = req.body.idServer;
         
-        // Faça as validações dos valores
+        
         if (email == undefined) {
             res.status(400).send("Seu email está undefined!");
         } else if (senha == undefined) {
@@ -101,7 +101,7 @@ function Dadosperfil(req, res) {
             res.status(400).send("Seu artista está undefined!");
         }  else {
     
-            // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+          
             favoritoModel.atualizar(instrumento, musica, genero, artista, id),
             favoritoModel.atualizarUser(email, senha, id)
                 .then(
@@ -122,8 +122,11 @@ function Dadosperfil(req, res) {
 
     }
 
+
+
 module.exports = {
     Dadosperfil,
     cadastrarFav,
-    atualizar
+    atualizar,
+   
 }

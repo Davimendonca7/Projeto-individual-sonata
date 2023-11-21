@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        <title>Sonata | Página Inicial</title>
+        <title>Sonata | Perfil</title>
     
         <script src="../js/sessao.js"></script>
         <link rel="stylesheet" href="../css/sweetalert.css">
@@ -22,10 +22,9 @@
             <a href="../usuario/homeUser.html"><img src="../imagens/SonataLogoSfundo.png" alt="" style="width:100px;"></a>
         </div>
         <div class="itens-nav">
-                <!-- <a href="#">HOME</a> -->
                 <a href="./homeUser.html">HOME</a>            
                 <a href="./jogo1.html">JOGO</a>
-                <a href="#">ANÁLISES</a>
+                <a href="./analises.html">ANÁLISES</a>
                 <a href="./mural.html">MURAL</a>
                 <a href="#" onclick="limparSessao()">SAIR</a>
             
@@ -40,35 +39,36 @@
                 </div>
                 <button class="btn_perfil" onclick="editar()">editar perfil</button>
             </div>
+
             <div class="dadosPerfil">
-                <h1>SUAS INFORMAÇÕES</h1>
+                <h1>SEU PERFIL</h1>
                 <div class="dados">
                     <div class="dados2">
-                    Seu email <br>
+                        <span class="titulo"> Seu email</span> <br>
                     <span id="emailFav">email</span>
                     </div>
                     <div class="dados2">
-                    Sua senha <br> 
+                        <span class="titulo"> Sua senha</span> <br> 
                     <span id="senhaFav">senha</span>
                     </div>
                 </div>
                 <div class="dados">
                     <div class="dados2">
-                    Instrumento favorito <br>
+                        <span class="titulo">Instrumento favorito</span> <br>
                     <span id="instrumentoFav">instrumento</span>
                     </div>
                     <div class="dados2">
-                    Música favorita <br> 
+                        <span class="titulo">Música favorita</span> <br> 
                     <span id="musicaFav">musica</span>
                     </div>
                 </div>
                 <div class="dados">
                     <div class="dados2">
-                    Gênero musical favorito <br> 
+                        <span class="titulo">Gênero musical favorito</span> <br> 
                     <span id="generoFav">genero</span>
                     </div>
                     <div class="dados2">
-                    Artista favorito <br>
+                        <span class="titulo">Artista favorito</span> <br>
                      <span id="artistaFav">artista</span>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
         </div>
      </div>
         
-    
+    <script src="../js/sweetalertCadastro.js"></script>
 </body>
 </html>
 
@@ -197,6 +197,37 @@
         var genero = genero_input.value; 
         var artista = artista_input.value; 
 
+        if(email == "",
+           senha == "",
+           instrumento == "",
+           musica == "",
+           genero == "",
+           artista == ""){
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+                });
+                Toast.fire({
+                    title: "Preencha os campos corretamente!",
+                text: "Não pode haver campo em branco",
+                icon: "error",
+                color: "#F2CF63",
+                background: "#011126",
+                iconColor : "red",
+                });
+         
+
+            return false;
+          }
+
         fetch("/favorito/atualizar", {
       method: "POST",
       headers: {
@@ -218,13 +249,33 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+                });
+                Toast.fire({
+                    title: "Perfil atualizado!",
+                text: "Seus dados foram atualizados",
+                icon: "success",
+                color: "#F2CF63",
+                background: "#011126",
+                iconColor : "#F2CF63",
+                });
          
          console.log(resposta)
          
           
         setTimeout(() => {
                     window.location = "./perfil.html";
-                  }, "1000");
+                  }, "2000");
           
         }
           

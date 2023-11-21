@@ -35,9 +35,12 @@ function atualizarUser(email, senha, id){
     return database.executar(instrucao);
 }
 
+
+
 module.exports = {
     Dadosperfil,
     cadastrarFav,
     atualizar,
-    atualizarUser
+    atualizarUser,
+    
 };
