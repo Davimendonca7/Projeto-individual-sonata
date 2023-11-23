@@ -1,7 +1,7 @@
 .form{
     background-color: rgba(0, 0, 0, 0.692);
     position: absolute;
-    width: 100vw;
+    width: 98vw;
     height: 100vw;
     display : flex;
     justify-content: center;

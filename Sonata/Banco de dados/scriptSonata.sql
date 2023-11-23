@@ -28,6 +28,8 @@ foreign key (fkUsuario) references usuario(id));
 select * from usuario;
 
 insert into usuario (nome, email, senha) values
+('Davi', 'davi@gmail.com', '4002'),
+('ivan', 'ivan@gmail.com', 'davi'),
 ('Eduardo', 'eduardo@gmail.com', 'dudu'),
 ('felipe', 'felipe@gmail.com', 'fe234'),
 ('gustavo', 'gustavo@gmail.com', 'senha123'),
@@ -40,6 +42,8 @@ insert into usuario (nome, email, senha) values
 ('samira', 'samira@gmail.com', 'arabi656');
 
 insert into detalhesUser values
+(1, 'saxofone', 'o melhor', 'trap', 'veigh'),
+(2, 'violão', 'o melhor', 'pop', 'drake'),
 (3, 'saxofone', 'confident', 'pop', 'justin bieber'),
 (4, 'violão', 'orações', 'trap', 'veigh'),
 (5, 'ukulele', 'labirinto', 'rap', 'veigh'),
