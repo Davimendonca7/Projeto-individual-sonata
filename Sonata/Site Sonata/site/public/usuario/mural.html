@@ -27,7 +27,7 @@
         <div class="itens-nav">
                 <a href="./homeUser.html">HOME</a>
                 <a href="./jogo1.html">JOGO</a>
-                <a href="./analises.html">ANÁLISES</a>
+                <a href="./analises.html">ANALYTICS</a>
                 <a href="./perfil.html">PERFIL</a>            
                 <a href="#" onclick="limparSessao()">SAIR</a>
             
@@ -163,14 +163,11 @@
                 background: "#011126",
                 iconColor : "#F2CF63",
                 });
-
-                // window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
                 
                 setTimeout(function () {
                         window.location = "./mural.html";
                     }, 2000);
                 
-                    // window.location = "/dashboard/mural.html";
                 limparFormulario();
                 
             } else if (resposta.status == 404) {
@@ -248,7 +245,8 @@
                 }
 
                 resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    console.log("Dados recebidos do mural: ", JSON.stringify(resposta));
+                    console.log(resposta[0].idUsuario, " id do usuario")
 
                     var feed = document.getElementById("feed_container");
                     feed.innerHTML = "";
@@ -262,17 +260,21 @@
                         var spanNome = document.createElement("span");
                         var divDescricao = document.createElement("div");
                         var divButtons = document.createElement("div");
-                        // var btnEditar = document.createElement("button");
+                      
+                        if(resposta[i].idUsuario == sessionStorage.ID_USUARIO){
+                        console.log("essa sugestão é desse usuario")
                         var btnDeletar = document.createElement("button");
+                    }
+
 
 
                         spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
                         spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
                         spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                         divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-                        // btnEditar.innerHTML = "Editar";
+                        if(resposta[i].idUsuario == sessionStorage.ID_USUARIO){
                         btnDeletar.innerHTML = "Deletar";
-
+                    }
                         divPublicacao.className = "publicacao";
                         spanTitulo.id = "inputNumero" + publicacao.idAviso;
                         spanNome.className = "publicacao-nome";
@@ -281,32 +283,32 @@
 
                         divButtons.className = "div-buttons"
 
-                        // btnEditar.className = "publicacao-btn-editar"
-                        // btnEditar.id = "btnEditar" + publicacao.idAviso;
-                        // btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
 
+                        if(resposta[i].idUsuario == sessionStorage.ID_USUARIO){
                         btnDeletar.className = "publicacao-btn-editar"
                         btnDeletar.id = "btnDeletar" + publicacao.idAviso;
                         btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
+                    }
 
                         divPublicacao.appendChild(spanID);
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanTitulo);
                         divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(divButtons);
-                        // divButtons.appendChild(btnEditar);
+                        if(resposta[i].idUsuario == sessionStorage.ID_USUARIO){
                         divButtons.appendChild(btnDeletar);
+                    }
                         feed.appendChild(divPublicacao);
                     }
 
-                    // finalizarAguardar();
+                 
                 });
             } else {
                 throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
             console.error(resposta);
-            // finalizarAguardar();
+            
         });
     }
 

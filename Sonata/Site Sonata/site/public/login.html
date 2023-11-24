@@ -25,9 +25,9 @@
         </div>
         <div class="itens-nav">
                 <a href="./index.html">HOME</a>
-                <a href="#">SOBRE NÓS</a>
-                <a href="#">DEDICAÇÃO</a>
-                <!-- <a href="#">pag</a>    -->
+                <a href="./index.html#parte2">SOBRE NÓS</a>
+                <a href="./index.html#parte3">O PROJETO</a>
+                <a href="./cadastro.html">CADASTRE-SE</a>
         </div>
     </div>
     
@@ -57,12 +57,6 @@
         </div>
 
     </div>
-   
-    <!-- <div id="div_aguardar" class="loading-div" >
-        <img src="./assets/circle-loading.gif" id="loading-gif" style="display: none;">
-    </div> -->
-
-
   
        <!-- sweet alert -->
        <script src="./js/sweetalertCadastro.js"></script>
@@ -74,10 +68,6 @@
 
 
     function entrar() {
-        // aguardar();
-
-        
-
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
@@ -106,10 +96,6 @@
            
            
             return false;
-        }
-        else {
-            // setInterval(
-            //     'sumir mensagem', 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -160,7 +146,7 @@
 
                     setTimeout(function () {
                         window.location = "./usuario/homeUser.html";
-                    }, 1500); // apenas para exibir o loading
+                    }, 1500); 
 
                 });
 
@@ -200,8 +186,5 @@
         })
 
         return false;
-    }
-
-    
-
+}
 </script>

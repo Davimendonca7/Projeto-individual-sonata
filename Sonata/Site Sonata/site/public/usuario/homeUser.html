@@ -25,7 +25,7 @@
     </div>
     <div class="itens-nav">
             <a href="./jogo1.html">JOGO</a>
-            <a href="./analises.html">ANÁLISES</a>
+            <a href="./analises.html">ANALYTICS</a>
             <a href="./mural.html">MURAL</a>
             <a href="./perfil.html">PERFIL</a>            
             <a href="#" onclick="limparSessao()">SAIR</a>
@@ -41,12 +41,14 @@
             <div class="flex">
                 <div class="texto_topo">
                    
-                    <h1>Olá, <span id="b_usuario">usuário</span>!</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sed corrupti nostrum praesentium a aut itaque ad sit quasi aliquid explicabo temporibus quaerat id inventore quod, quisquam veritatis fugit sunt? lore</p>
+                    <h1>Bem vindo <span id="devolta" style="display: none;">de volta</span>, <span id="b_usuario">usuário</span>!</h1>
+                    <p>Bem vindo ao Sonata, o seu refúgio digital para amantes da música! Explore nosso piano     virtual e deixe sua criatividade musical fluir.
+                      Descubra os gráficos dos gostos favoritos de nossos usuários, mergulhando na diversidade da música. contribua para a harmonia do noso espaço compartilhando suas sugestões no nosso mural. Aprecie cada nota e faça parte da sinfonia Sonata
+                    </p>
                 </div>
                 <div class="imagem_topo">
-                    <img src="../imagens/bandaHomeUser.svg" alt="imagem logo home" style="width: 600px;">
-                    <!-- <h1>SONATA</h1> -->
+                    <img src="../imagens/bandaHomeUser1.svg" alt="imagem logo home" style="width: 600px;">
+                   
                 </div>
             </div>
         </div>
@@ -100,6 +102,7 @@
      
      if( sessionStorage.logou == sessionStorage.ID_USUARIO ){
          console.log("ja logou")
+         devolta.style.display = 'inline-flex'
         }else{
           console.log("nao logou")
           form.style.display = 'flex';
@@ -167,15 +170,7 @@
           iconColor : "#F2CF63",
           confirmButtonColor : "#F2CF63",
          
-        })
-        // .then((result)=> {
-        //   if(result.isConfirmed){
-        // setTimeout(() => {
-        //             window.location = "./homeUser.html";
-        //           }, "1000");
-        //   }
-        // })
-       
+        })       
         } else {
           throw "Houve um erro ao tentar realizar o formulario!";
         }

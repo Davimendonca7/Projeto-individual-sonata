@@ -1,10 +1,18 @@
 /* topo do site */
 
+html{
+    scroll-behavior: smooth;
+}
+
 main{
     /* padding: 50px; */
-    height: 200vh;
+    height: 250vh;
     width: 100%;
     background-color: #011126;
+}
+
+.header{
+    /* position: fixed; */
 }
 
 .flex{
@@ -68,11 +76,15 @@ font-size: 2em;
 letter-spacing: 3px;
 /* margin-top: 100px; */
 text-align: center;
-text-shadow: 0 0 5px #f2cb63;
+
+}
+
+.sonata{
+    /* text-shadow: 0 0 5px #f2cb63; */
 }
 
 .h1Segunda{
-    padding-top: 30px;
+    padding-top: 40px;
     text-shadow: 0 0 40px #f2cb63;
     /* 0px 10px 40px -12px #F2CF63; */
 }
@@ -80,7 +92,7 @@ text-shadow: 0 0 5px #f2cb63;
 p{
     text-align: start;
     color:#f2cb63;
-    font-size: x-large;
+    font-size: xx-large;
     padding-right: 50px;
     margin-left: 50px;
 }
@@ -106,4 +118,18 @@ p{
 }
 
 
+/* terceira parte */
 
+.h1Terceira{
+    padding-top: 50px;
+    text-shadow: 0 0 40px #f2cb63;
+    /* 0px 10px 40px -12px #F2CF63; */
+}
+
+.imagem3{
+    margin-right: 70px;
+}
+
+.conteudo3 p{
+    font-size: xx-large;
+}

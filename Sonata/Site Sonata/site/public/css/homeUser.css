@@ -22,58 +22,26 @@
 }
 
 .topo h1{
-    font-size: 4vw;
+    font-size: 3vw;
     font-weight: 800;
 }
 
 .texto_topo{
-    width: 40vw;
+    width: 50vw;
 }
 
 main{
     background-color: #011126;
-    height: 200vh;
+    height: 86vh;
     width: 100%;
-}
-
-
-/* segunda parte */
-
-.segunda{
-    padding: 40px 4%;
-
-}
-
-.segunda_parte{
-    display: flex;
-}
-
-.flex{
-    display: flex;
-}
-
- .flex{
-    align-items: center;
-    justify-content: center;
-    gap: 90px;
-}
-
-.segunda h1, p{
-    color: #f2cf63;
-}
-
-.texto_segunda{
-   
-    align-items: center;
-    justify-content: center;
-    gap: 90px;
-}
-
-/* .parte2{
-   
     
-    background-color:blue;
-} */
+}
+
+
+p{
+    font-size: x-large;
+}
+
 
 
 

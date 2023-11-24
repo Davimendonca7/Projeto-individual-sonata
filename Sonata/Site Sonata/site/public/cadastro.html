@@ -25,8 +25,10 @@
     <div class="itens-nav">
        
             <a href="./index.html">HOME</a>
-            <a href="#">SOBRE NÓS</a>
-            <a href="#">DEDICAÇÃO</a>
+            <a href="./index.html#parte2">SOBRE NÓS</a>
+            <a href="./index.html#parte3">O PROJETO</a>
+            <a href="./login.html">LOGIN</a>
+           
                   
     </div>
 </div>
@@ -74,15 +76,30 @@
 
 <script>
   function cadastrar() {
-
-       //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+    if(
+      nomeVar == "" &&
+      emailVar == "" &&
+      senhaVar == "" &&
+      confirmacaoSenhaVar == "" 
+    ){
+      Swal.fire({
+          title: "Preencha os campos!",
+          text: "Não podemos adivinhar suas informações infelizmente, Um cadastro não é tão difícil assim, você consegue!",
+          icon: "error",
+          color: "#F2CF63",
+          background: "#011126",
+          iconColor : "red",
+          confirmButtonColor : "#f2ce63dc",
+        })
+        return false;
+    }
    
-    if (
+    else if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
@@ -90,13 +107,13 @@
  
     ) {
       Swal.fire({
-          title: "Preencha os campos !",
-          text: "Todos os campos estão em branco.",
+          title: "Preencha todos os campos !",
+          text: "Cadastrando-se pela metade? Aqui toda informação sua é importante, vamos lá!",
           icon: "error",
           color: "#F2CF63",
           background: "#011126",
           iconColor : "red",
-          confirmButtonColor : "#F2CF63",
+          confirmButtonColor : "#f2ce63dc",
         })
 
       
@@ -109,12 +126,10 @@
           color: "#F2CF63",
           background: "#011126",
           iconColor : "red",
-          confirmButtonColor : "#F2CF63",
+          confirmButtonColor : "#000b21",
         })
 
         return false;
-    }else {
-      setInterval(sumirMensagem, 5000);
     }
 
     fetch("/usuarios/cadastrar", {
@@ -164,10 +179,5 @@
       });
 
     return false;
-  }
-
-
-  function sumirMensagem() {
-    // cardErro.style.display = "none";
   }
 </script>
