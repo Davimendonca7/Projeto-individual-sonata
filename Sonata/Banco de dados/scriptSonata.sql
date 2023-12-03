@@ -39,21 +39,27 @@ insert into usuario (nome, email, senha) values
 ('felipe', 'felipe@gmail.com', 'larapios'),
 ('maria', 'maria@gmail.com', 'dulce06'),
 ('bia', 'bia@gmail.com', 'leme112'),
+('osvaldo', 'osvaldo@gmail.com', 'valdo553'),
+('carlos', 'carlos@gmail.com', 'carlos74'),
+('matheus', 'ttheuw@gmail.com', 'teteu67'),
 ('samira', 'samira@gmail.com', 'arabi656');
 
 insert into detalhesUser values
 (1, 'saxofone', 'o melhor', 'trap', 'veigh'),
-(2, 'violão', 'o melhor', 'pop', 'drake'),
+(2, 'violão', 'o melhor', 'pop', 'Beethoven'),
 (3, 'saxofone', 'confident', 'pop', 'justin bieber'),
 (4, 'violão', 'orações', 'trap', 'veigh'),
 (5, 'ukulele', 'labirinto', 'rap', 'veigh'),
-(6, 'guitarra', 'mil maneiras', 'trap', 'drake'),
-(7, 'saxofone', 'orações', 'rock', 'veigh'),
-(8, 'saxofone', 'orações', 'trap', 'mozart'),
+(6, 'guitarra', 'mil maneiras', 'trap', 'Beethoven'),
+(7, 'saxofone', '4° sinfonia', 'clássica', 'veigh'),
+(8, 'saxofone', '4° sinfonia', 'trap', 'mozart'),
 (9, 'saxofone', 'orações', 'trap', 'veigh'),
 (10, 'violão', 'confident', 'rock', 'mozart'),
-(11, 'bateria', 'o melhor', 'sertanejo', 'mozart'),
-(12, 'baixo', 'confident', 'classica', 'matue');
+(11, 'ukulele', 'o 4° sinfonia', 'clássica', 'mozart'),
+(12, 'guitarra', 'o 4° sinfonia', 'clássica', 'mozart'),
+(13, 'violão', 'o melhor', 'clássica', 'Beethoven'),
+(14, 'guitarra', 'o melhor', 'clássica', 'mozart'),
+(15, 'ukulele', 'confident', 'classica', 'Beethoven');
 
 select * from aviso;
 
