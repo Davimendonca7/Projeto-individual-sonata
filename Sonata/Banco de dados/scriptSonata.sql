@@ -45,21 +45,21 @@ insert into usuario (nome, email, senha) values
 ('samira', 'samira@gmail.com', 'arabi656');
 
 insert into detalhesUser values
-(1, 'saxofone', 'o melhor', 'trap', 'veigh'),
-(2, 'violão', 'o melhor', 'pop', 'Beethoven'),
-(3, 'saxofone', 'confident', 'pop', 'justin bieber'),
-(4, 'violão', 'orações', 'trap', 'veigh'),
+(1, 'saxofone', 'Adagio', 'trap', 'veigh'),
+(2, 'violão', 'Adagio', 'pop', 'Beethoven'),
+(3, 'saxofone', 'Adagio', 'pop', 'justin bieber'),
+(4, 'violão', 'A flauta magica', 'trap', 'veigh'),
 (5, 'ukulele', 'labirinto', 'rap', 'veigh'),
-(6, 'guitarra', 'mil maneiras', 'trap', 'Beethoven'),
-(7, 'saxofone', '4° sinfonia', 'clássica', 'veigh'),
-(8, 'saxofone', '4° sinfonia', 'trap', 'mozart'),
+(6, 'guitarra', 'A flauta magica', 'trap', 'Beethoven'),
+(7, 'saxofone', '4° sinfonia de beethoven', 'clássica', 'veigh'),
+(8, 'saxofone', '4° sinfonia de beethoven', 'trap', 'mozart'),
 (9, 'saxofone', 'orações', 'trap', 'veigh'),
-(10, 'violão', 'confident', 'rock', 'mozart'),
-(11, 'ukulele', 'o 4° sinfonia', 'clássica', 'mozart'),
-(12, 'guitarra', 'o 4° sinfonia', 'clássica', 'mozart'),
-(13, 'violão', 'o melhor', 'clássica', 'Beethoven'),
-(14, 'guitarra', 'o melhor', 'clássica', 'mozart'),
-(15, 'ukulele', 'confident', 'classica', 'Beethoven');
+(10, 'violão', 'Adagio', 'rock', 'mozart'),
+(11, 'ukulele', '4° sinfonia de beethoven', 'clássica', 'mozart'),
+(12, 'guitarra', '4° sinfonia de beethoven', 'clássica', 'mozart'),
+(13, 'violão', 'Adagio', 'clássica', 'Beethoven'),
+(14, 'violão', 'Adagio', 'clássica', 'mozart'),
+(15, 'ukulele', 'A flauta magica', 'classica', 'Beethoven');
 
 select * from aviso;
 
