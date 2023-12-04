@@ -1,18 +1,13 @@
-/* topo do site */
+
 
 html{
     scroll-behavior: smooth;
 }
 
 main{
-    /* padding: 50px; */
     height: 250vh;
     width: 100%;
     background-color: #011126;
-}
-
-.header{
-    /* position: fixed; */
 }
 
 .flex{
@@ -34,7 +29,6 @@ main{
 
  h2{
     color: #f2cf63;
-    /* text-transform: lowercase; */
     text-align: center;
 }
 
@@ -54,10 +48,8 @@ main{
 /* SEGUNDA PARTE DA TELA */
 
 .segundaParte{
-    /* display: flex; */
     justify-content: center;
     align-items: center;
-     /* gap: 90px; */
      width: 100%;
      height: 80vh;
      background-color: #011126;
@@ -68,25 +60,18 @@ main{
     
 }
 
-
 h1{
-color: #f2ce63dc;
-text-transform: uppercase;
-font-size: 2em;
-letter-spacing: 3px;
-/* margin-top: 100px; */
-text-align: center;
+    color: #f2ce63dc;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 3px;
+    text-align: center;
 
-}
-
-.sonata{
-    /* text-shadow: 0 0 5px #f2cb63; */
 }
 
 .h1Segunda{
     padding-top: 40px;
     text-shadow: 0 0 40px #f2cb63;
-    /* 0px 10px 40px -12px #F2CF63; */
 }
 
 p{
@@ -118,12 +103,9 @@ p{
 }
 
 
-/* terceira parte */
-
 .h1Terceira{
     padding-top: 50px;
     text-shadow: 0 0 40px #f2cb63;
-    /* 0px 10px 40px -12px #F2CF63; */
 }
 
 .imagem3{

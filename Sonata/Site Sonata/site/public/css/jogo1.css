@@ -1,4 +1,4 @@
-/* fonte */
+
 
 *{
     margin: 0;
@@ -12,9 +12,7 @@ body{
 }
 
 .boxTitulo{
-    /* width: 40vw; */
     height:15vh;
-    /* background-color: white; */
     display:flex;
     justify-content: center;
     align-items:center;
@@ -26,7 +24,6 @@ body{
 }
 
 h1{
-    /* text-align: center; */
     color:#f2cb63;
     text-transform: uppercase; 
     margin: 50px;
@@ -38,10 +35,8 @@ h1{
     background-color: #020202;
     width: 45vw;
     height: 50vh;
-    /* margin: 150px 600px 0; */
     margin: 50px auto ;
     border-radius: 20px;
-    /* color: white; */
     display: flex;
     flex-direction: column;
     align-items: center;

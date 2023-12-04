@@ -8,7 +8,6 @@ body{
 }
 
 .header{
-    /* color: white; */
     display: flex;
     width: 98vw;
     height: 14vh;
@@ -68,7 +67,6 @@ body{
 
 .itens-nav a:hover{
     color: #F2CF63;
-    /* box-shadow: 0px 0px 35px #F2CF63; */
     
 }
 

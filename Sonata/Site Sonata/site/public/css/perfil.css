@@ -2,7 +2,6 @@ main{
     background-color: #011126;
     height: 86vh;
     width: 100vw;
-    /* position: absolute; */
 }
 
 .tela{
@@ -17,7 +16,6 @@ main{
 
 .fotoPerfil{
     display: flex;
-    /* background-color: red; */
     color: #F2CF63;
     width: 30vw;
     height:100%;
@@ -65,7 +63,6 @@ main{
 
 .dadosPerfil{
     color: #F2CF63;
-    /* background-color: blue; */
     width: 60vw;
     display: flex;
     flex-direction: column;
@@ -81,7 +78,6 @@ main{
     color: #F2CF63;
     font-weight: 800;
     margin: 60px;
-    /* margin-right: 160px; */
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -101,15 +97,10 @@ main{
 }
 
 .dados2{
-    /* width :180px; */
     height: 50px;
     justify-content: center;
-    /* align-items: center; */
 }
 
-/* span{
-    background-color: white;
-} */
 
 /* editar perfil */
 
